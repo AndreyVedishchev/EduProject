@@ -2,7 +2,6 @@ package collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -10,23 +9,9 @@ import java.util.stream.Collectors;
 public class Starter {
     public static void main(String[] args) {
 
-//        boolean b = Starter.checkBalance("{khkh{khkk[knk]kj}}");
-//        System.out.println(b);
+        boolean b = Starter.checkBalance("{khkh{khkk[knk]kj}}");
+        System.out.println(b);
 
-        MyLinkedList ml = new MyLinkedList();
-        ml.add(11);
-        ml.add(22);
-        ml.add(33);
-        ml.add(44);
-
-        System.out.println(ml.contains(444));
-
-        ml.printList();
-
-        System.out.println(ml.remove(33));
-        System.out.println(ml.remove(333));
-
-        ml.printList();
     }
 
     //проверка баланса скобок

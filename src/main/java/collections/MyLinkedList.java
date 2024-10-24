@@ -16,14 +16,6 @@ public class MyLinkedList {
             this.value = value;
             this.next = null;
         }
-
-//        @Override
-//        public String toString() {
-//            return "Node{" +
-//                    "value=" + value +
-//                    ", next=" + next +
-//                    '}';
-//        }
     }
 
     void add(int value) {
@@ -36,17 +28,19 @@ public class MyLinkedList {
         currentNode.next = newNode;
     }
 
-    boolean remove(int value) {
+    int remove(int value) {
         Node currentNode = head;
+        int result = 0;
 
         while (currentNode.next != null) {
             if (currentNode.next.value == value) {
                 currentNode.next = currentNode.next.next; //получается, что тут уже не могу обратиться к предыдущей ноде. Сборщик ее удалит? т.к. на нее ничего теперь не ссылается, но она ссылается.
-                return true;
+                return result;
             }
+            result++;
             currentNode = currentNode.next;
         }
-        return false;
+        return -1;
     }
 
     boolean contains(int value) {
@@ -68,5 +62,25 @@ public class MyLinkedList {
             currentNode = currentNode.next;
             System.out.println(currentNode.value);
         }
+    }
+
+    public static void main(String[] args) {
+
+        MyLinkedList ml = new MyLinkedList();
+        ml.add(11);
+        ml.add(22);
+        ml.add(33);
+        ml.add(44);
+        System.out.println("-------------");
+        System.out.println(ml.contains(444));
+        System.out.println("-------------");
+        ml.printList();
+        System.out.println("-------------");
+        System.out.println(ml.remove(33));
+        System.out.println(ml.remove(333));
+        System.out.println("-------------");
+        ml.printList();
+        System.out.println("-------------");
+        System.out.println(ml.remove(11));
     }
 }
