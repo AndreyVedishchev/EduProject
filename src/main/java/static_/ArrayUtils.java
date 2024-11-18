@@ -2,8 +2,6 @@ package static_;
 
 import java.util.Arrays;
 
-import static java.util.Arrays.sort;
-
 public class ArrayUtils {
 
     //поиск максимального элемента
@@ -18,19 +16,23 @@ public class ArrayUtils {
     }
 
     //сортировки массива
-    public static int[] getSort(int[] arr) {
-        int[] result = new int[arr.length];
-        sort(arr);
-        for (int i = 0; i < arr.length; i++) {
-            result[i] = arr[i];
+    public static int[] getSort(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = array.length - 1; j > i; j--) {
+                if (array[j - 1] > array[j]) {
+                    int tmp = array[j - 1];
+                    array[j - 1] = array[j];
+                    array[j] = tmp;
+                }
+            }
         }
-        return result;
+        return array;
     }
 
     //проверка на упорядоченность
     public static boolean checkSort(int[] arr) {
         if (arr.length <= 1) {
-            return false;
+            return true;
         }
         for (int i = 1; i < arr.length; i++) {
             if (arr[i - 1] > arr[i]) {
@@ -49,5 +51,6 @@ public class ArrayUtils {
 
         System.out.println(getMax(nums));
         System.out.println(Arrays.toString(getSort(nums)));
+
     }
 }
